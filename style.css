@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Poppins:wght@400;500&family=Righteous&display=swap");
+@import "animated.css";
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --logo-font: "Righteous", cursive;
+  --backcolor: #020024;
+  --boxcolor: linear-gradient(90deg, #003688 0%, rgba(55, 0, 137, 1) 73%);
+}
+
+.nav {
+  max-height: 100px;
+  padding: 4;
+  background: var(--boxcolor);
+}
+
+.title {
+  font-size: 1.5rem;
+  padding-left: 10px;
+  color: #dbdbdb;
+}
+.title h2 {
+  font-family: var(--logo-font);
+}
+
+.container {
+  background: linear-gradient(-45deg, #020024, #020030, #090b25, #000000);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 50px;
+  height: 100vh;
+}
+.container h2 {
+  color: #c7c7c7;
+  font-weight: 300;
+}
+.calculator {
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 60px 400px;
+  padding: 15px;
+  position: relative;
+}
+
+.inputs,
+.results {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: var(--boxcolor);
+  border-radius: 10px;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.tot {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.ps {
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 5px;
+}
+.input_style {
+  width: 50%;
+  background-color: var(--backcolor);
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  border: black;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+.btns {
+  padding: 10px;
+  background-color: rgb(0, 1, 77);
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px black;
+}
+.btns:hover {
+  background: linear-gradient(-45deg, #8952ee, #b73ce7, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+.loss:hover {
+  background: linear-gradient(-45deg, #8952ee, #b73ce7, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+.hov:hover {
+  background: linear-gradient(-45deg, #ee7752, #b73ce7, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+.px {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 400;
+}
+.total__wins {
+  margin-top: 50px;
+}
+
+.newcapital {
+  display: block;
+  margin-top: 50px;
+  padding: 10px;
+  background-color: #00ffff17;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px black, 2px 2px 4px black;
+  color: gold;
+}
+
+#myChart {
+  background-color: rgb(106 254 255 / 67%);
+  padding: 1rem;
+  position: absolute;
+  top: 25%;
+  right: 40%;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 5px 5px 4px black;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    height: 200vh;
+  }
+  .calculator {
+    border-radius: 10px;
+    display: block;
+    padding: 15px;
+    position: relative;
+  }
+  .inputs {
+    margin-bottom: 2rem;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(3,auto);
+  }
+  #myChart {
+    opacity: 0;
+    cursor: none;
+  }
+}

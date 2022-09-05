@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trades-Winrate</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="title"><h2>BackTester</h2></div>
+    </div>
+    <div class="container">
+      <h2>Calculate Your Profits From Crypto Trading</h2>
+      <div class="calculator">
+        <div class="inputs">
+          <span class="ps">Capital</span>
+          <input
+            class="input_style"
+            type="number"
+            name="Your Starting capital"
+            id="capital"
+            step="0.01"
+            value="0.00"
+          />
+          <span class="ps">Target (%)</span>
+          <input
+            class="input_style"
+            type="number"
+            name="Your Target"
+            id="target"
+            step="0.01"
+            value="0.00"
+          />
+          <span class="ps">Leverage</span>
+          <input
+            class="input_style"
+            type="number"
+            name="Your Leverage"
+            id="leverage"
+            step="1"
+            value="1"
+          />
+          <span class="ps">Fees (%)</span>
+          <input
+            class="input_style"
+            type="number"
+            name="Your FeesRate"
+            id="fees"
+            step="0.01"
+            value="0.00"
+          />
+          <div class="buttons">
+            <span id="taget1" class="btns ps">Target 1</span>
+            <span id="taget2" class="btns ps">Target 2</span>
+            <span id="fullTp" class="btns ps hov">TP only</span>
+            <span id="halfTp" class="btns ps hov">Half TP only</span>               
+            <span id="loss" class="btns ps loss">Loss</span>         
+          </div>
+        </div>
+        <div class="space-bettwen"></div>
+        <div class="results">
+          <div class="total__wins tot">
+            <p class="px">Wins</p>
+            <span id="winscount" class="px">0</span>
+          </div>
+          <div class="total__losses tot">
+            <p class="px">Losses</p>
+            <span id="lossescount" class="px">0</span>
+          </div>
+          <div class="total__trades tot">
+            <p class="px">Total Trades</p>
+            <span id="totalTrades" class="px">0</span>
+          </div>
+          <div class="winrate tot">
+            <p class="px">WinRate</p>
+            <span id="WinRate" class="px">0<span>%</span></span>
+          </div>
+          <div class="newcapital tot">
+            <p>New Capital</p>
+            <span id="result" class="px">0</span>
+            <p>Profit Factor</p>
+            <span id="factor" class="px">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas id="myChart"></canvas>
+    <script src="sc.js"></script>
+  </body>
+</html>
