@@ -86,7 +86,7 @@ targetOne.addEventListener(
       result.innerHTML = (storageNumber + percent + capitalValue).toFixed(2);
       capital.value = result.innerHTML;
       updateProgress("win");
-      isTarget2 = true
+      isTarget2 = false
       changeHTML(isTarget2);
     }
   })
