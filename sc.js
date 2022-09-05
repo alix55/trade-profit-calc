@@ -23,7 +23,7 @@ let toNumbers = ({ capital, target, leverage, fees }) => {
   return { capitalValue, targetValue, leverageValue, feesValue };
 };
 
-//calc vars
+//calc variables
 let percent = 0;
 let storageNumber = 0;
 //winrate & vars
