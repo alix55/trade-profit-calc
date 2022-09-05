@@ -58,6 +58,13 @@ let updatePercent = (half, targetAndFees) => {
   return percent;
 };
 
+// var sauvgard 
+let isTarget2 = false
+
+function changeHTML(isTarget2) {
+   targetOne.innerHTML = isTarget2 ? "target 2" : "target 1"
+}
+
 //buttons Events
 targetOne.addEventListener(
   "click",
@@ -68,26 +75,23 @@ targetOne.addEventListener(
       leverage,
       fees,
     });
-    percent = updatePercent(capitalValue / 2, targetValue - feesValue);
-    storageNumber = percent;
+    if( isTarget2 == false ) {
+      percent = updatePercent(capitalValue / 2, targetValue - feesValue);
+      storageNumber = percent;
+      isTarget2 = true
+      changeHTML(isTarget2);
+    } else {
+      x = getStartingCapital(capitalValue)
+      percent = updatePercent(capitalValue / 2, targetValue - feesValue);
+      result.innerHTML = (storageNumber + percent + capitalValue).toFixed(2);
+      capital.value = result.innerHTML;
+      updateProgress("win");
+      isTarget2 = true
+      changeHTML(isTarget2);
+    }
   })
 );
-targetTwo.addEventListener(
-  "click",
-  (tp2 = () => {
-    const { capitalValue, targetValue, leverageValue, feesValue } = toNumbers({
-      capital,
-      target,
-      leverage,
-      fees,
-    });
-    x = getStartingCapital(capitalValue)
-    percent = updatePercent(capitalValue / 2, targetValue - feesValue);
-    result.innerHTML = (storageNumber + percent + capitalValue).toFixed(2);
-    capital.value = result.innerHTML;
-    updateProgress("win");
-  })
-);
+
 loss.addEventListener(
   "click",
   (calcLoss = () => {
