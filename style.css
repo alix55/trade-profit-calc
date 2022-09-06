@@ -85,6 +85,7 @@
 
 .buttons {
   margin-top: 10px;
+  user-select: none;
 }
 .btns {
   padding: 10px;
@@ -99,15 +100,11 @@
   background-size: 400% 400%;
   animation: gradient 2s ease infinite;
 }
-.loss:hover {
-  background: linear-gradient(-45deg, #8952ee, #b73ce7, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 2s ease infinite;
-}
-.hov:hover {
-  background: linear-gradient(-45deg, #ee7752, #b73ce7, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 2s ease infinite;
+
+#downloadResult{
+  float: right;
+  background-color: #b73ce7e0;
+  background: linear-gradient(-45deg, #8952ee,#6e0dbd, #23d5ab);
 }
 
 .px {

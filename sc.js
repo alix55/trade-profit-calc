@@ -13,6 +13,7 @@ const lossesCounter = document.querySelector("#lossescount");
 const tradesCounter = document.querySelector("#totalTrades");
 const winRate = document.querySelector("#WinRate");
 const profitFactor = document.querySelector("#factor");
+const downloadResult = document.querySelector("#downloadResult");
 
 let toNumbers = ({ capital, target, leverage, fees }) => {
   const capitalValue = parseFloat(capital.value || "0.000");
@@ -40,8 +41,8 @@ let startingCapital = [null];
 
 let getStartingCapital = (x) => {
   if (startingCapital.length < 2) {
-    console.log(capital.value)
-    console.log(typeof(capital.value))
+    console.log(capital.value);
+    console.log(typeof capital.value);
     startingCapital.push(capital.value);
   }
 };
@@ -58,11 +59,40 @@ let updatePercent = (half, targetAndFees) => {
   return percent;
 };
 
-// var sauvgard 
-let isTarget2 = false
+// var sauvgard
+let isTarget2 = false;
 
 function changeHTML(isTarget2) {
-   targetOne.innerHTML = isTarget2 ? "target 2" : "target 1"
+  targetOne.innerHTML = isTarget2 ? "target 2" : "target 1";
+}
+
+const arr = [];
+
+downloadResult.addEventListener("click", () => {
+  downloadObjectAsJson(arr, "winRateCalc");
+});
+
+function parseData() {
+  let text = arr.map((str) => {
+    return `
+    -----------------------------------------------
+    ${str}
+    -----------------------------------------------
+    `;
+  });
+  console.log({ text });
+  return text.join("\n");
+}
+
+function downloadObjectAsJson(exportObj, exportName) {
+  var dataStr =
+    "data:text/plain;charset=utf-8," + encodeURIComponent(parseData());
+  var downloadAnchorNode = document.createElement("a");
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", exportName + ".txt");
+  document.body.appendChild(downloadAnchorNode); // required for firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
 }
 
 //buttons Events
@@ -75,18 +105,18 @@ targetOne.addEventListener(
       leverage,
       fees,
     });
-    if( isTarget2 == false ) {
+    if (isTarget2 == false) {
       percent = updatePercent(capitalValue / 2, targetValue - feesValue);
       storageNumber = percent;
-      isTarget2 = true
+      isTarget2 = true;
       changeHTML(isTarget2);
     } else {
-      x = getStartingCapital(capitalValue)
+      x = getStartingCapital(capitalValue);
       percent = updatePercent(capitalValue / 2, targetValue - feesValue);
       result.innerHTML = (storageNumber + percent + capitalValue).toFixed(2);
       capital.value = result.innerHTML;
       updateProgress("win");
-      isTarget2 = false
+      isTarget2 = false;
       changeHTML(isTarget2);
     }
   })
@@ -101,7 +131,7 @@ loss.addEventListener(
       leverage,
       fees,
     });
-    x = getStartingCapital(capitalValue)
+    x = getStartingCapital(capitalValue);
     percent = updatePercent(capitalValue, targetValue + feesValue);
     result.innerHTML = (capitalValue - percent).toFixed(2);
     capital.value = result.innerHTML;
@@ -117,7 +147,7 @@ halfTp.addEventListener(
       leverage,
       fees,
     });
-    x = getStartingCapital(capitalValue)
+    x = getStartingCapital(capitalValue);
     percent = updatePercent(capitalValue / 2, targetValue - feesValue);
     result.innerHTML = (capitalValue + percent).toFixed(2);
     capital.value = result.innerHTML;
@@ -134,14 +164,13 @@ fullTp.addEventListener(
       leverage,
       fees,
     });
-    x = getStartingCapital(capitalValue)
+    x = getStartingCapital(capitalValue);
     percent = updatePercent(capitalValue, targetValue - feesValue);
     result.innerHTML = (capitalValue + percent).toFixed(2);
     capital.value = result.innerHTML;
     updateProgress("win");
   })
 );
-
 
 //winrate & chart calculator
 let updateProgress = (type) => {
@@ -162,6 +191,11 @@ let updateProgress = (type) => {
   profitFactor.innerHTML =
     ((result.innerHTML / startingCapital[1]) * 100).toFixed(2) + "%";
 
+    arr.push(
+      `result : 
+      total trades ${tradesCounter.innerText} with ${winRate.innerText} Winrate
+      and a new capital of ${result.innerText}USD / profitfactor ${profitFactor.innerText}
+      `)
   //chart logic
   xValues.push(tradesCounter.innerHTML);
   yValues.push(y);
