@@ -66,6 +66,7 @@ function changeHTML(isTarget2) {
   targetOne.innerHTML = isTarget2 ? "target 2" : "target 1";
 }
 
+//Download Result
 const arr = [];
 
 downloadResult.addEventListener("click", () => {
@@ -152,7 +153,7 @@ halfTp.addEventListener(
     result.innerHTML = (capitalValue + percent).toFixed(2);
     capital.value = result.innerHTML;
     profitFactor.innerHTML =
-      ((result.innerHTML / startingCapital[1]) * 100).toFixed(2) + "%";
+      ((result.innerHTML / startingCapital[1]) * 100 - 100).toFixed(2) + "%";
   })
 );
 fullTp.addEventListener(
@@ -189,7 +190,7 @@ let updateProgress = (type) => {
 
   tradesCounter.innerHTML = winsUpdate + lossUpdate;
   profitFactor.innerHTML =
-    ((result.innerHTML / startingCapital[1]) * 100).toFixed(2) + "%";
+    ((result.innerHTML / startingCapital[1]) * 100 - 100).toFixed(2) + "%";
 
     arr.push(
       `result : 
